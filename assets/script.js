@@ -39,7 +39,17 @@ const projects = [
     title: "Number Guessing Game",
     description: "A simple number guessing game built with Python.",
     url: "https://github.com/Kelash-Malhi/number_guessing_game"
-  }
+  },
+  {
+    title: "Smart Learning Playlist Redirect Tool",
+    description: "A tool to redirect users to a specific playlist in a smart learning environment.",
+    url: "https://github.com/Kelash-Malhi/Smart-Learning-Playlist-Redirect-Tool"
+  },
+  {
+    title: "Repeated Words Counter Tool",
+    description: "A tool to count repeated words in a given text.",
+    url: "https://github.com/Kelash-Malhi/Repeated-Words-Counter-Tool"
+  },
   
 ];
 
@@ -168,3 +178,4 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
