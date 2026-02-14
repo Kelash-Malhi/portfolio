@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Kelash Malhi </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="background-scene" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+      <span class="grid-overlay"></span>
+    </div>
+
+    <header id="top" class="hero container">
+      <nav class="nav glass fade-in-up delay-1">
+        <a class="logo" href="#top">KELASH MALHI</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero-panel glass fade-in-up delay-2">
+        <p class="eyebrow">Python Developer • Data Science Enthusiast</p>
+        <h1>Where Curiosity Meets Code And Data Tells Stories.</h1>
+        <p>
+          I build practical, data-driven products and polished digital interfaces. Explore my
+          achievements, project work, and academic journey.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#achievements">View Achievements</a>
+        </div>
+      </section>
+    </header>
+
+    <main class="container">
+      <section id="about" class="section fade-in-up delay-1">
+        <h2>About Me</h2>
+        <p>
+          I am Kelash Malhi — passionate about Python, analytics, machine learning, and building
+          useful technology with excellent user experience.
+        </p>
+      </section>
+
+      <section id="achievements" class="section fade-in-up delay-2">
+        <div class="section-head">
+          <h2>Achievements & Certificates</h2>
+          <p>Displayed content is managed from code/admin side only.</p>
+        </div>
+        <div class="card-grid" id="achievement-grid"></div>
+      </section>
+
+      <section id="projects" class="section fade-in-up delay-2">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p>Click any card to open the project repository.</p>
+        </div>
+        <div class="card-grid" id="project-grid"></div>
+      </section>
+
+      <section id="education" class="section fade-in-up delay-3">
+        <div class="section-head">
+          <h2>Education</h2>
+          <p>My academic background and milestones.</p>
+        </div>
+        <div class="timeline" id="education-list"></div>
+      </section>
+
+      <section id="contact" class="section contact fade-in-up delay-3">
+        <h2>Contact</h2>
+        <p>Let’s collaborate on Python, Data Science, and product development projects.</p>
+        <a class="btn btn-ghost" href="mailto:kelashhamthani2.0@gmail.com">Email Me</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/kelash-malhi-ds25">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/KelashMalhi">GitHub</a>
+        <a class="btn btn-ghost" href="https://wa.me/03103219652">WhatsApp</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Kelash Malhi • All Rights Reserved</p>
+    </footer>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
