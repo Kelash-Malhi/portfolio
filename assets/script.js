@@ -49,7 +49,7 @@ const projects = [
     title: "Repeated Words Counter Tool",
     description: "A tool to count repeated words in a given text.",
     url: "https://github.com/Kelash-Malhi/Repeated-Words-Counter-Tool"
-  },
+  }
   
 ];
 
@@ -178,4 +178,5 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
