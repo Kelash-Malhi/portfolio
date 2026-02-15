@@ -49,6 +49,11 @@ const projects = [
     title: "Repeated Words Counter Tool",
     description: "A tool to count repeated words in a given text.",
     url: "https://github.com/Kelash-Malhi/Repeated-Words-Counter-Tool.git"
+  },
+  {
+    title: "Multiplication Table Generator",
+    description: "The program takes at least 2 numbers from the user and prints their multiplication tables from 1 to 10.",
+    url: "https://github.com/Kelash-Malhi/Multiplication-Table-Generator.git"
   }
   
 ];
@@ -178,6 +183,7 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
 
