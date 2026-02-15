@@ -43,12 +43,12 @@ const projects = [
   {
     title: "Smart Learning Playlist Redirect Tool",
     description: "A tool to redirect users to a specific playlist in a smart learning environment.",
-    url: "https://github.com/Kelash-Malhi/Smart-Learning-Playlist-Redirect-Tool"
+    url: "https://github.com/Kelash-Malhi/Smart-Learning-Playlist-Redirect-Tool.git"
   },
   {
     title: "Repeated Words Counter Tool",
     description: "A tool to count repeated words in a given text.",
-    url: "https://github.com/Kelash-Malhi/Repeated-Words-Counter-Tool"
+    url: "https://github.com/Kelash-Malhi/Repeated-Words-Counter-Tool.git"
   }
   
 ];
@@ -178,6 +178,7 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
 
