@@ -54,6 +54,11 @@ const projects = [
     title: "Multiplication Table Generator",
     description: "The program takes at least 2 numbers from the user and prints their multiplication tables from 1 to 10.",
     url: "https://github.com/Kelash-Malhi/Multiplication-Table-Generator.git"
+  },
+  {
+    title: "Digital Clock",
+    description: "A simple digital clock built with Python.",
+    url: "https://github.com/Kelash-Malhi/Digital-Clock.git"
   }
   
 ];
@@ -183,6 +188,7 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
 
