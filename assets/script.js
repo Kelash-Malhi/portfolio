@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Library Management System",
     description: "A Python-based system to manage library operations like book checkout, return, and inventory tracking.",
-    url: "https://example.com"
+    url: "https://github.com/Kelash-Malhi/Library-Management-System.git"
   },
   {
     title: "Number Guessing Game",
@@ -178,5 +178,6 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
