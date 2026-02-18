@@ -59,6 +59,11 @@ const projects = [
     title: "Digital Clock",
     description: "A simple digital clock built with Python.",
     url: "https://github.com/Kelash-Malhi/Digital-Clock.git"
+  },
+  {
+    title: "Portfolio",
+    description: "Made a portfolio website using HTML , CSS and JavaScript and hosted at GitHub.",
+    url: "https://kelash-malhi.github.io/portfolio/"
   }
   
 ];
@@ -188,6 +193,7 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
 
