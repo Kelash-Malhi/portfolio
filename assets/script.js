@@ -64,7 +64,8 @@ const projects = [
     title: "Portfolio",
     description: "Made a portfolio website using HTML , CSS and JavaScript and hosted at GitHub.",
     url: "https://kelash-malhi.github.io/portfolio/"
-  }
+  },
+  { type:"heading", text:"Working on new projects totally based on Numpy" }
   
 ];
 
@@ -131,6 +132,13 @@ function renderProjects() {
   projectGrid.innerHTML = "";
 
   projects.forEach((project) => {
+    if (project.type === "heading") {
+      const sectionTitle = document.createElement("h2");
+      sectionTitle.textContent = project.text;
+      sectionTitle.className = "project-section-heading";
+      projectGrid.appendChild(sectionTitle);
+      return;
+    }
     const card = createCardShell();
     const heading = document.createElement("h3");
     heading.textContent = project.title;
@@ -193,6 +201,7 @@ function initializePortfolio() {
 }
 
 initializePortfolio();
+
 
 
 
