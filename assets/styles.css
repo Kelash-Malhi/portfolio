@@ -306,3 +306,42 @@ p {
   }
 }
 
+/* Container */
+.social-buttons {
+  display: flex;
+  gap: 15px; /* space between buttons */
+  justify-content: center; /* center horizontally */
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Button Style */
+.social-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* circle size */
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff; /* white background for logos */
+  color: #000; /* default icon color */
+  text-decoration: none;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Hover Effects */
+.social-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Specific Brand Colors on Hover */
+.social-btn.email:hover { background-color: #c71610; color: #fff; }
+.social-btn.whatsapp:hover { background-color: #25D366; color: #fff; }
+.social-btn.github:hover { background-color: #333; color: #fff; }
+.social-btn.linkedin:hover { background-color: #0077b5; color: #fff; }
+.social-btn.facebook:hover { background-color: #1877f2; color: #fff; }
+.social-btn.instagram:hover { background-color: #eb5184; color: #fff; }
+
