@@ -65,6 +65,11 @@ const projects = [
     description: "Made a portfolio website using HTML , CSS and JavaScript and hosted at GitHub.",
     url: "https://kelash-malhi.github.io/portfolio/"
   },
+  {
+    title: "Precious Time",
+    description: "Made a live countdown wallpaper using HTML, CSS and JavaScript.",
+    url: "https://github.com/Kelash-Malhi/precious_time"
+  },
   { type:"heading", text:"Working on new projects totally based on Numpy" }
   
 ];
