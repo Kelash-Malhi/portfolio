@@ -107,6 +107,15 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
 }
+.logo-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.6rem;
+  background-color: white;
+  background-size: cover;
+  border-radius: 90% 50% 1000% 50%;
+
+}
 
 .nav-links {
   display: flex;
