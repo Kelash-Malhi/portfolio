@@ -85,6 +85,11 @@ const projects = [
     title: "T🥚❌T",
     description: "Made a Emoji converter, where you can convert your Emoji into ABC and vice versa.",
     url: "https://github.com/Kelash-Malhi/TextEmoji"
+  },
+  {
+    title: "ASC 73 73",
+    description: "Made a ASCII converter, where you can convert your ASCII Code into ABC and vice versa.",
+    url: "https://github.com/Kelash-Malhi/ASCII"
   }
   // { type:"heading", text:"Working on new projects totally based on Numpy" }
   
