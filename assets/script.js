@@ -80,6 +80,11 @@ const projects = [
     title: "L337 C0D3",
     description: "Made a leet code converter, where you can convert your leet into ABC and vice versa.",
     url: "https://github.com/Kelash-Malhi/L337-C0D3"
+  },
+  {
+    title: "T🥚❌T",
+    description: "Made a Emoji converter, where you can convert your Emoji into ABC and vice versa.",
+    url: "https://github.com/Kelash-Malhi/TextEmoji"
   }
   // { type:"heading", text:"Working on new projects totally based on Numpy" }
   
