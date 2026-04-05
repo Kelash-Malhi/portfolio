@@ -70,12 +70,17 @@ const projects = [
     description: "Made a live countdown wallpaper using HTML, CSS and JavaScript.",
     url: "https://github.com/Kelash-Malhi/precious_time"
   },
-   { type:"heading", text:"ABC TO MORSE & MORSE TO ABC CONVERTER (...---...)" },
+   { type:"heading", text:"S3CR3T LANGUAGE CONV3RT3R (...---...)" },
   {
     title: "S---S DotDash",
     description: "Made a morse code converter, where you can convert your morse into ABC and vice versa.",
     url: "https://github.com/Kelash-Malhi/S---S_DotDash"
   },
+   {
+    title: "L337 C0D3",
+    description: "Made a leet code converter, where you can convert your leet into ABC and vice versa.",
+    url: "https://github.com/Kelash-Malhi/L337-C0D3"
+  }
   // { type:"heading", text:"Working on new projects totally based on Numpy" }
   
 ];
