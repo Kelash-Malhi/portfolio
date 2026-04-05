@@ -70,10 +70,10 @@ const projects = [
     description: "Made a live countdown wallpaper using HTML, CSS and JavaScript.",
     url: "https://github.com/Kelash-Malhi/precious_time"
   },
-   { type:"heading", text:"ABC TO MORSE & MORSE TO ABC (...---...)" },
+   { type:"heading", text:"ABC TO MORSE & MORSE TO ABC CONVERTER (...---...)" },
   {
     title: "S---S DotDash",
-    description: "Made a morse code converter , where you can convert your morse into ABC and vice versa.",
+    description: "Made a morse code converter, where you can convert your morse into ABC and vice versa.",
     url: "https://github.com/Kelash-Malhi/S---S_DotDash"
   },
   // { type:"heading", text:"Working on new projects totally based on Numpy" }
