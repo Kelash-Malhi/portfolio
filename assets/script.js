@@ -95,7 +95,7 @@ const projects = [
   {
     title: "secret",
     description: "Website where you can convert secret languages like ASCII, LEET and MORSE",
-    url: "https://github.com/Kelash-Malhi/secret/"
+    url: "https://kelash-malhi.github.io/secret/"
   },
   {
     title: "Portfolio",
