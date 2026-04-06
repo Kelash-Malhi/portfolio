@@ -101,6 +101,11 @@ const projects = [
     title: "Portfolio",
     description: "Made a portfolio website using HTML , CSS and JavaScript and hosted at GitHub.",
     url: "https://kelash-malhi.github.io/portfolio/"
+  },
+  {
+    title: "Precious Time",
+    description: "Made a countdown wallpaper website using HTML , CSS and JavaScript and hosted at GitHub.",
+    url: "https://kelash-malhi.github.io/PreciousTime/"
   }
   
 ];
