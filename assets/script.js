@@ -90,8 +90,18 @@ const projects = [
     title: "ASC 73 73",
     description: "Made a ASCII converter, where you can convert your ASCII Code into ABC and vice versa.",
     url: "https://github.com/Kelash-Malhi/ASCII"
+  },
+  { type:"heading", text:"USEFUL WEBSITES MADE BY USING BASIC HTML CSS AND JAVASCRIPT" },
+  {
+    title: "secret",
+    description: "Website where you can convert secret languages like ASCII, LEET and MORSE",
+    url: "https://github.com/Kelash-Malhi/secret/"
+  },
+  {
+    title: "Portfolio",
+    description: "Made a portfolio website using HTML , CSS and JavaScript and hosted at GitHub.",
+    url: "https://kelash-malhi.github.io/portfolio/"
   }
-  // { type:"heading", text:"Working on new projects totally based on Numpy" }
   
 ];
 
