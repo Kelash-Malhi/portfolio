@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelash Malhi | Data Scientist & Analytics Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/fav.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="background-scene" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+      <span class="grid-overlay"></span>
+    </div>
+
+    <button id="backToTop" class="glass" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+    <header id="top" class="hero container">
+      <nav class="nav glass fade-in-up delay-1">
+        <a class="logo" href="#top">
+          <img src="assets/logo.png" alt="Kelash Malhi Logo" class="logo-img" />
+          KELASH MALHI
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#achievements">Certifications</a>
+          <a href="#projects">Projects</a>
+          <a href="#learning-hub">Knowledge Base</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+          <a href="#" class="resume-nav-link resume-trigger"><i class="fas fa-file-download"></i> Resume</a>
+        </div>
+      </nav>
+
+      <section class="hero-panel glass fade-in-up delay-2">
+        <p class="eyebrow">Data Scientist • Analytics & Dashboard Specialist</p>
+        <h1>Where Data Tells Stories And Code Drives Decisions.</h1>
+        <p>
+          I extract actionable insights from complex datasets and turn them into interactive visual products. Specialize in data modeling, statistical analysis, and storytelling dashboards.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">Explore Analytics Projects</a>
+          <a class="btn btn-ghost resume-trigger" href="#"><i class="fas fa-download" style="margin-right: 8px;"></i> Download CV</a>
+          <a class="btn btn-vcard" href="assets/docs/vc.png" download="Kelash_Malhi_BusinessCard.png"><i class="fas fa-address-card" style="margin-right: 8px;"></i> Get Visiting Card</a>
+        </div>
+      </section>
+    </header>
+
+    <main class="container">
+      <section id="about" class="section fade-in-up delay-1">
+        <h2>About Me</h2>
+        <p>
+          I am Kelash Malhi — a Data Science professional specialized in translating raw numbers into functional interactive strategies. Proficient in Python statistical computing, end-to-end exploratory data analysis (EDA), and automated dashboard reporting systems with a focus on polished UX.
+          <br><br>
+          <span style="font-style: italic; opacity: 0.85; font-size: 0.95rem;">
+            <i class="fas fa-wand-magic-sparkles" style="color: var(--secondary); margin-right: 5px;"></i> 
+            A strong believer in modern workflows, this portfolio itself is a product of AI-augmented engineering (Vibe Coded), combining strategic human architecture with speed-of-thought AI execution.
+          </span>
+        </p>
+        <div class="skills-wrapper">
+          <h3>Core Technical Arsenal</h3>
+          <div id="skills-grid" class="skills-grid"></div>
+        </div>
+      </section>
+
+      <section id="achievements" class="section fade-in-up delay-2">
+        <div class="section-head">
+          <h2>Professional Certifications & Specializations</h2>
+          <p>Validated credentials from Google Career Certificates (GCC) programs, university specializations, and algorithmic development tracks.</p>
+        </div>
+        <div class="card-grid" id="achievement-grid"></div>
+      </section>
+
+      <section id="projects" class="section fade-in-up delay-2">
+        <div class="section-head">
+          <h2>Core Projects</h2>
+          <p>Click any project framework card to review documentation and source architectures.</p>
+        </div>
+        <div class="card-grid" id="project-grid"></div>
+      </section>
+
+      <section id="learning-hub" class="section fade-in-up delay-2">
+        <div class="section-head">
+          <h2>Beyond The Code — Continuous Learning</h2>
+          <p>An overview of technical literature, domain-specific books, and analytical media driving my analytical perspectives.</p>
+        </div>
+        <div class="learning-flex-container">
+          <div class="learning-column glass">
+            <h3><i class="fas fa-book-open" style="color: var(--secondary); margin-right: 10px;"></i> Technical Literature & Books</h3>
+            <div id="books-list" class="sub-list"></div>
+          </div>
+          <div class="learning-column glass">
+            <h3><i class="fas fa-film" style="color: var(--primary); margin-right: 10px;"></i> Analytical & Tech Documentaries</h3>
+            <div id="movies-list" class="sub-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section fade-in-up delay-3">
+        <div class="section-head">
+          <h2>Academic Timeline</h2>
+          <p>Academic milestones focused on advanced statistical methods and computational data architectures.</p>
+        </div>
+        <div class="timeline" id="education-list"></div>
+      </section>
+
+      <section id="contact" class="section contact fade-in-up delay-3">
+        <h2>Let's Drive Value Together</h2>
+        <p>Open for data consulting roles, analytical pipelines development, or automation collaborations.</p>
+        
+        <div class="copy-panel glass">
+          <span id="emailText">kelashhamthani2.0@gmail.com</span>
+          <button id="copyEmailBtn" aria-label="Copy email to clipboard"><i class="far fa-copy"></i> Copy Email</button>
+        </div>
+
+        <div class="social-buttons">
+          <a href="mailto:kelashhamthani2.0@gmail.com" target="_blank" aria-label="Email" class="social-btn email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://wa.me/+923103219652" target="_blank" aria-label="WhatsApp" class="social-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://github.com/Kelash-Malhi" target="_blank" aria-label="GitHub" class="social-btn github">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/kelash-malhi-ds25/" target="_blank" aria-label="LinkedIn" class="social-btn linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Kelash Malhi • Analytics Portfolio</p>
+      <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px; letter-spacing: 0.05em;">
+        <i class="fas fa-bolt" style="color: var(--secondary);"></i> 
+        Engineered via Modern AI-Augmented Workflows (Vibe Coded & Human-Optimized for Performance)
+      </p>
+    </footer>
+
+    <div id="resume-modal" class="modal-overlay">
+      <div class="modal-content glass">
+        <div class="modal-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Pipeline In Progress</h3>
+        <p>I am currently optimizing my technical resume and dataset architectures for the upcoming season. The final node will be deployed shortly!</p>
+        <button id="close-modal-btn" class="btn btn-primary">Acknowledge</button>
+      </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
