@@ -53,6 +53,13 @@ const achievements = [
     link: "#"
   },
   {
+    title: "AI Fundamentals",
+    description: "Earned core certification in AI foundations under the Google Career Certificates framework. Validated expertise in utilizing predictive algorithms, constructing structured prompt structures, identifying neural bias metrics, and deploying AI-augmented strategies to optimize software development lifecycles.",
+    media: "assets/certificates/gccaif.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a"
+  },
+  {
     title: "Python Development & Engineering Certificate",
     description: "Completed an intensive development track covering object-oriented structures, algorithms, and computational efficiency pipelines authorized by PITP-Muet.",
     media: "assets/certificates/pitpc.png",
