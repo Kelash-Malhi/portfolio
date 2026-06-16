@@ -21,60 +21,68 @@ const achievements = [
     text: "GLOBAL ANALYTICS & CAREER SPECIALIZATIONS"
   },
   {
-    title: "Overall Google AI Essentials — Professional Certificate", // Title tweaked to prevent pipeline count override
+    title: "Overall Google AI Essentials — Professional Certificate",
     description: "The ultimate credential awarded by Google upon successful architecture and execution of all 7 core AI engineering tracks. Validated full-scale professional competence in deploying predictive pipelines, multi-modal generative assets, advanced structured prompting, and localized application system integrations.",
     media: "assets/certificates/gcc0.jpg",
     mediaType: "image",
-    link: "#" 
+    link: "#",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 1: AI Fundamentals",
     description: "Mastered core artificial intelligence paradigms, exploring machine learning operational cycles, neural network concepts, and structural data frameworks while evaluating data ethics, algorithmic bias, and security protocols.",
     media: "assets/certificates/gcc1.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a"
+    link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a",
+    series: "google-ai" // Pipeline Series Anchor
   },
   {
     title: "Google AI Certificate 2: AI for Brainstorming and Planning",
     description: "Leveraged advanced large language models (LLMs) to construct high-velocity project pipelines, map product architecture ideas, and optimize technical workflows for software development models.",
     media: "assets/certificates/gcc2.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/32907afbb403e47a1f532d4ee142872f"
+    link: "https://coursera.org/share/32907afbb403e47a1f532d4ee142872f",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 3: AI for Research and Insights",
     description: "Deployed specialized cognitive AI nodes to ingest dense unstructured data, optimize semantic search patterns, run market intelligence queries, and synthesize complex technical documentation.",
     media: "assets/certificates/gcc3.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/90747a953542262e8d14feb469570a34"
+    link: "https://coursera.org/share/90747a953542262e8d14feb469570a34",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 4: AI for Writing and Communicating",
     description: "Engineered precise prompt engineering structures to draft corporate technical specs, automate complex communication channels, and refine product onboarding documentation.",
     media: "assets/certificates/gcc4.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/355601c1199d073ae8831c17fffdb87c"
+    link: "https://coursera.org/share/355601c1199d073ae8831c17fffdb87c",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 5: AI for Content Creation",
     description: "Explored generative modeling pipelines for asset production, mapping multi-modal algorithms to generate high-end visual design frameworks and digital product documentation assets.",
     media: "assets/certificates/gcc5.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/62add493d8520e51eb0c915f5ac5b39d"
+    link: "https://coursera.org/share/62add493d8520e51eb0c915f5ac5b39d",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 6: AI for Data Analysis",
     description: "Applied machine learning optimization models to automate raw dataset cleansing, execute automated exploratory data analysis (EDA), and build predictive statistical workflows for business intelligence.",
     media: "assets/certificates/gcc6.jpg",
     mediaType: "image",
-    link: "https://coursera.org/share/2baa4ec89d5c21d22667c62290f6bcf3"
+    link: "https://coursera.org/share/2baa4ec89d5c21d22667c62290f6bcf3",
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 7: AI for App Building",
     description: "Architected and deployed AI-driven software nodes, focusing on integrating large language models (LLMs) and automated analytical engines into functional application backend systems to maximize runtime utility.",
     media: "assets/certificates/gcc7.jpg",
     mediaType: "image",
-    link: "#"
+    link: "#",
+    series: "google-ai" // Closing Pipeline Node
   },
   {
     title: "The Data Science Profession — University of London",
@@ -262,9 +270,8 @@ function renderSkills() {
 function renderAchievements() {
   achievementGrid.innerHTML = "";
   
-  // Pehle hum sirf Google AI wale courses ka total count aur positions track karne ke liye dynamic logic nikalenge
-  const gccAIItems = achievements.filter(item => item.title && item.title.includes("Google AI"));
-  let gccAICounter = 0;
+  // Dynamic Grouping Map: Yeh automatic har series ke sub-modules ko track karega
+  const seriesCounters = {};
 
   achievements.forEach((item) => {
     if (item.type === "heading") {
@@ -277,20 +284,32 @@ function renderAchievements() {
     
     const card = createCardShell(); 
 
-    // PIPELINE RECOGNITION ENGINE
-    // Function ke andar jahan check hota hai, wahan yeh string pass karein:
-    if (item.title && item.title.includes("Google AI Certificate")) {
+    // AUTOMATED PIPELINE ENGINE
+    if (item.series && !item.isMaster) {
       card.className += " gcc-ai-minimal-card";
-  
-      if (gccAICounter === 0) {
-        card.className += " gcc-ai-node-first";
-        } else if (gccAICounter === gccAIItems.length - 1) {
-        card.className += " gcc-ai-node-last";
-        } else {
-        card.className += " gcc-ai-node-mid";
+      
+      // Agar is series ka counter pehle nahi bana, toh 0 se initialize karein
+      if (!seriesCounters[item.series]) {
+        seriesCounters[item.series] = { current: 0, total: achievements.filter(x => x.series === item.series && !x.isMaster).length };
       }
-      gccAICounter++;
+      
+      const currentTrack = seriesCounters[item.series];
+      
+      if (currentTrack.current === 0) {
+        card.className += " gcc-ai-node-first"; // Automatic First Node
+      } else if (currentTrack.current === currentTrack.total - 1) {
+        card.className += " gcc-ai-node-last"; // Automatic Last Node
+      } else {
+        card.className += " gcc-ai-node-mid";  // Automatic Mid Nodes
+      }
+      
+      currentTrack.current++; // Counter increment
+      item.moduleNumber = currentTrack.current; // Track dynamic serial for tag
+    } 
+    else if (item.isMaster) {
+      card.className += " gcc-ai-standalone-card"; // Standalone master card treatment
     }
+
     if (item.mediaType === "image") {
       const image = document.createElement("img");
       image.src = item.media;
@@ -300,10 +319,19 @@ function renderAchievements() {
 
     const infoDiv = document.createElement("div");
     
-    if (item.title && item.title.includes("Google AI")) {
+    // AUTOMATED CYBER TAG GENERATION
+    if (item.series && !item.isMaster) {
       const cyberTag = document.createElement("span");
       cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85;";
-      cyberTag.innerHTML = `GOOGLE CAREER CERTIFICATE ${gccAICounter}`;
+      // Dynamic shortcode representation
+      const seriesLabel = item.series.replace("-", " ").toUpperCase();
+      cyberTag.innerHTML = `${seriesLabel} MODULE 0${item.moduleNumber}`;
+      infoDiv.appendChild(cyberTag);
+    } 
+    else if (item.isMaster) {
+      const cyberTag = document.createElement("span");
+      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.95;";
+      cyberTag.innerHTML = "<i class='fas fa-trophy'></i> CORE METRIC CREDENTIAL";
       infoDiv.appendChild(cyberTag);
     }
 
@@ -329,7 +357,8 @@ function renderAchievements() {
     card.appendChild(link);
     achievementGrid.appendChild(card);
   });
-}function renderProjects() {
+}
+function renderProjects() {
   projectGrid.innerHTML = "";
   projects.forEach((project) => {
     if (project.type === "heading") {
