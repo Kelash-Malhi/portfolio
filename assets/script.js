@@ -21,11 +21,11 @@ const achievements = [
     text: "GLOBAL ANALYTICS & CAREER SPECIALIZATIONS"
   },
   {
-    title: "Google AI Essentials — Professional Certificate",
+    title: "Overall Google AI Essentials — Professional Certificate", // Title tweaked to prevent pipeline count override
     description: "The ultimate credential awarded by Google upon successful architecture and execution of all 7 core AI engineering tracks. Validated full-scale professional competence in deploying predictive pipelines, multi-modal generative assets, advanced structured prompting, and localized application system integrations.",
     media: "assets/certificates/gcc0.jpg",
     mediaType: "image",
-    link: "#" // Yahan apna main verified link aayega jab complete credential mil jaye!
+    link: "#" 
   },
   {
     title: "Google AI Certificate 1: AI Fundamentals",
@@ -95,20 +95,6 @@ const achievements = [
     text: "COMPUTATIONAL ALGORITHMS & CORE ENGINEERING"
   },
   {
-    title: "Google Career Certificate in AI",
-    description: "In-progress professional pipeline authorized by Google. Focuses on foundational AI architectures, large language model integration, operational workflow automation, prompt engineering paradigms, and AI-augmented software development.",
-    media: "assets/Certificates/google_placeholder.png",
-    mediaType: "text",
-    link: "#"
-  },
-  {
-    title: "AI Fundamentals",
-    description: "Earned core certification in AI foundations under the Google Career Certificates framework. Validated expertise in utilizing predictive algorithms, constructing structured prompt structures, identifying neural bias metrics, and deploying AI-augmented strategies to optimize software development lifecycles.",
-    media: "assets/certificates/gccaif.jpg",
-    mediaType: "image",
-    link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a"
-  },
-  {
     title: "Python Development & Engineering Certificate",
     description: "Completed an intensive development track covering object-oriented structures, algorithms, and computational efficiency pipelines authorized by PITP-Muet.",
     media: "assets/certificates/pitpc.png",
@@ -133,9 +119,7 @@ const achievements = [
     mediaType: "image",
     link: "https://www.mygreatlearning.com/certificate/XICBMPQE?referrer_code=GLMLKL6WCY4FW"
   }
-
 ];
-
 const projects = [
   { type: "heading", text: "DATA SCIENCE & ANALYTICAL DASHBOARDS" },
   {
@@ -294,22 +278,19 @@ function renderAchievements() {
     const card = createCardShell(); 
 
     // PIPELINE RECOGNITION ENGINE
-    if (item.title && item.title.includes("Google AI")) {
+    // Function ke andar jahan check hota hai, wahan yeh string pass karein:
+    if (item.title && item.title.includes("Google AI Certificate")) {
       card.className += " gcc-ai-minimal-card";
-      
+  
       if (gccAICounter === 0) {
-        // First Certificate Card
         card.className += " gcc-ai-node-first";
-      } else if (gccAICounter === gccAIItems.length - 1) {
-        // Last Certificate Card
+        } else if (gccAICounter === gccAIItems.length - 1) {
         card.className += " gcc-ai-node-last";
-      } else {
-        // Mid Certificates Cards (2, 3, 4, 5)
+        } else {
         card.className += " gcc-ai-node-mid";
       }
-      gccAICounter++; // Processing next sequential node
+      gccAICounter++;
     }
-
     if (item.mediaType === "image") {
       const image = document.createElement("img");
       image.src = item.media;
