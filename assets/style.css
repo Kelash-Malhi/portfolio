@@ -326,3 +326,61 @@ p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.3)); }
   50% { transform: scale(1.08); filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.7)); }
 }
+/* ==========================================================================
+   GLOBAL GLASS CARD INTERACTIVE HOVER PIPELINE
+   ========================================================================== */
+.card {
+  /* Jo bhi aapki default glass property hai, uske sath ye line balance karegi */
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+}
+
+.card:hover {
+  /* Jab kisi bhi card par mouse aayega, wo halka sa lift hoga aur soft glow dega */
+  transform: translateY(-4px) !important;
+  border-color: rgba(34, 211, 238, 0.35) !important; /* Premium unified cyan tint */
+  box-shadow: 0 10px 25px rgba(34, 211, 238, 0.08) !important;
+}
+
+/* ==========================================================================
+   UNIFIED PIPELINE LAYOUT (CLOSED HARDWARE BUS CHANNEL CONFIGURATION)
+   ========================================================================== */
+.gcc-ai-minimal-card {
+  position: relative;
+  background-image: 
+    linear-gradient(rgba(34, 211, 238, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.02) 1px, transparent 1px) !important;
+  background-size: 12px 12px !important;
+  background-color: rgba(10, 16, 40, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Soft baseline container border */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* 1st Node: Left, Top, and Bottom borders with combined shadow mesh */
+.gcc-ai-node-first {
+  border-left: 3px solid var(--secondary) !important;
+  border-top: 2px solid var(--secondary) !important;
+  border-bottom: 2px solid var(--secondary) !important;
+  box-shadow: -5px 0 15px rgba(34, 211, 238, 0.08), 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
+}
+
+/* Mid Nodes: Top and Bottom tracking borders with vertical shadow stream */
+.gcc-ai-node-mid {
+  border-top: 2px solid var(--secondary) !important;
+  border-bottom: 2px solid var(--secondary) !important;
+  box-shadow: 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
+}
+
+/* Last Node: Right, Top, and Bottom system closer lines with right-anchored shadow */
+.gcc-ai-node-last {
+  border-right: 3px solid var(--secondary) !important;
+  border-top: 2px solid var(--secondary) !important;
+  border-bottom: 2px solid var(--secondary) !important;
+  box-shadow: 5px 0 15px rgba(34, 211, 238, 0.08), 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
+}
+
+/* Interactive Hover Engine */
+.gcc-ai-minimal-card:hover {
+  background-color: rgba(15, 23, 42, 0.75) !important;
+  border-color: rgba(34, 211, 238, 0.5) !important;
+  filter: brightness(1.15);
+}
