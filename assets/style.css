@@ -8,6 +8,10 @@
   --primary: #8b5cf6;
   --secondary: #22d3ee;
   --shadow: 0 25px 45px rgba(0, 5, 20, 0.55);
+  /* Interactive Transform Hooks */
+  --rx: 0deg;
+  --ry: 0deg;
+  --ty: 0px;
 }
 
 * {
@@ -59,7 +63,6 @@ body {
   mask-image: radial-gradient(circle at 50% 35%, black, transparent 75%);
 }
 
-/* Floating Back To Top Button Styling */
 #backToTop {
   position: fixed;
   bottom: 25px;
@@ -67,6 +70,7 @@ body {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  border: 1px solid var(--line);
   color: var(--secondary);
   font-size: 16px;
   cursor: pointer;
@@ -131,7 +135,7 @@ h1 { margin-top: 0.6rem; font-size: clamp(2rem, 4.5vw, 3.5rem); max-width: 22ch;
 p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
 
 .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-.btn { border-radius: 999px; text-decoration: none; font-weight: 600; padding: 0.8rem 1.6rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn { border-radius: 999px; text-decoration: none; font-weight: 600; padding: 0.8rem 1.6rem; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.2s ease, box-shadow 0.2s ease; border: none; cursor: pointer; }
 .btn:hover { transform: translateY(-2px); }
 
 .btn-primary { color: #f8fafc; background: linear-gradient(120deg, var(--primary), #6366f1); box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4); }
@@ -143,44 +147,35 @@ p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
 .section-head { margin-bottom: 1.5rem; }
 .section-head h2 { font-size: 2rem; font-family: "Space Grotesk", sans-serif; color: #fff; }
 
-/* Skills Section Grid Styling */
-.skills-wrapper {
-  margin-top: 2rem;
-}
-.skills-wrapper h3 {
-  font-size: 1.2rem;
-  font-family: "Space Grotesk", sans-serif;
-  color: #fff;
-  margin-bottom: 1rem;
-}
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.skill-badge {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--line);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--txt);
-  transition: all 0.2s ease;
-}
-.skill-badge:hover {
-  border-color: var(--secondary);
-  background: rgba(34, 211, 238, 0.1);
-  transform: translateY(-2px);
-}
+.skills-wrapper { margin-top: 2rem; }
+.skills-wrapper h3 { font-size: 1.2rem; font-family: "Space Grotesk", sans-serif; color: #fff; margin-bottom: 1rem; }
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-badge { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; color: var(--txt); transition: all 0.2s ease; }
+.skill-badge:hover { border-color: var(--secondary); background: rgba(34, 211, 238, 0.1); transform: translateY(-2px); }
 
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.card { border: 1px solid var(--line); border-radius: 18px; padding: 1.5rem; background: linear-gradient(145deg, rgba(20, 30, 60, 0.8), rgba(11, 18, 37, 0.94)); box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.18s ease, box-shadow 0.2s ease; }
-.card:hover { box-shadow: 0 30px 55px rgba(0, 6, 22, 0.62); }
+
+/* Enhanced Ultra-Smooth 3D Transform Framework using CSS custom properties variables */
+.card { 
+  border: 1px solid var(--line); 
+  border-radius: 18px; 
+  padding: 1.5rem; 
+  background: linear-gradient(145deg, rgba(20, 30, 60, 0.8), rgba(11, 18, 37, 0.94)); 
+  box-shadow: var(--shadow); 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s, box-shadow 0.3s; 
+}
+.card:hover { 
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 20px 40px rgba(34, 211, 238, 0.1); 
+}
 .card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #fff; }
 .card p { font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
 .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 1rem; }
-.card a { text-decoration: none; color: var(--secondary); font-weight: 600; display: inline-flex; align-items: center; font-size: 0.9rem; }
+.card a { text-decoration: none; color: var(--secondary); font-weight: 600; display: inline-flex; align-items: center; font-size: 0.9rem; gap: 6px; }
 
 .learning-flex-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
 .learning-column { padding: 1.5rem; border-radius: 18px; }
@@ -188,42 +183,26 @@ p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
 
 .sub-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; margin-bottom: 0.8rem; }
 .sub-item h4 { margin: 0 0 4px 0; color: var(--secondary); font-size: 1.05rem; }
-.sub-item p { margin: 0; font-size: 0.9rem; }
+
+/* Injected Learning List Modular Properties */
+.learning-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.learning-status { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(255,255,255,0.03); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); }
+.learning-author { color: var(--muted); font-size: 0.85rem; font-style: italic; margin: 4px 0; }
+.learning-desc { margin-top: 8px; color: var(--txt); line-height: 1.5; font-size: 0.9rem; }
 
 .timeline { display: grid; gap: 1rem; }
 .timeline-item { border-left: 3px solid var(--secondary); border-radius: 0 12px 12px 0; padding: 1rem 1.2rem; background: rgba(8, 14, 30, 0.62); box-shadow: var(--shadow); }
 .timeline-item h3 { color: #fff; margin-bottom: 0.2rem; }
-.timeline-item p { margin: 0.2rem 0; }
+.timeline-inst { color: var(--secondary); font-weight: 500; margin: 2px 0; }
+.timeline-year { font-size: 0.9rem; margin: 0; color: var(--muted); }
 
 .contact { text-align: center; padding: 4rem 0; }
 
-/* Copy Panel Dashboard Styling */
-.copy-panel {
-  display: inline-flex;
-  align-items: center;
-  gap: 15px;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background: rgba(255,255,255,0.02);
-}
-.copy-panel span {
-  font-family: monospace;
-  font-size: 1.05rem;
-  color: var(--secondary);
-}
-.copy-panel button {
-  background: var(--primary);
-  border: none;
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: opacity 0.2s;
-}
+.copy-panel { display: inline-flex; align-items: center; gap: 15px; padding: 0.6rem 1.2rem; border-radius: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--line); }
+.copy-panel span { font-family: monospace; font-size: 1.05rem; color: var(--secondary); }
+.copy-panel button { background: var(--primary); border: none; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: background-color 0.2s, color 0.2s; }
 .copy-panel button:hover { opacity: 0.9; }
+.copy-panel button.copied-success { background: var(--secondary) !important; color: var(--bg) !important; }
 
 .footer { margin-top: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.12); text-align: center; color: var(--muted); padding: 2rem 1rem; }
 
@@ -251,17 +230,14 @@ p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
 .social-btn.github:hover { background-color: #fff; color: #000; border-color: #fff; }
 .social-btn.linkedin:hover { background-color: #0077b5; color: #fff; border-color: #0077b5; }
 
-
-/* ==========================================================================
-   RESUME IN-PROGRESS MODAL OVERLAY & POPUP SYSTEM (GLASSMORPHISM THEME)
-   ========================================================================== */
+/* Modal Infrastructure Upgrades */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(5, 7, 15, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 99999; /* Pure interface me sabse upar hierarchy layer lane ke liye */
+  z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,118 +245,108 @@ p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
   pointer-events: none;
   transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
+.modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal-content {
   width: min(90%, 440px);
   padding: 2.5rem 2rem;
   text-align: center;
-  border: 1px solid rgba(34, 211, 238, 0.25) !important; /* Secondary color glow theme tint border */
+  border: 1px solid rgba(34, 211, 238, 0.25) !important;
   background: linear-gradient(135deg, rgba(15, 21, 48, 0.9), rgba(5, 7, 15, 0.98)) !important;
   transform: scale(0.85) translateY(15px);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
-.modal-overlay.active .modal-content {
-  transform: scale(1) translateY(0);
-}
-
-.modal-icon {
-  margin-bottom: 1.2rem;
-  display: inline-block;
-  animation: pulse-glow-modal 2.5s infinite ease-in-out;
-}
-
-.modal-icon i {
-  color: var(--secondary);
-  font-size: 3rem;
-  filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6));
-}
-
-.modal-content h3 {
-  font-family: "Space Grotesk", sans-serif;
-  color: #fff;
-  font-size: 1.6rem;
-  margin-bottom: 0.6rem;
-  letter-spacing: 0.02em;
-}
-
-.modal-content p {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 1.8rem;
-}
-
-.modal-content #close-modal-btn {
-  padding: 0.6rem 2.2rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
+.modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+.modal-icon { margin-bottom: 1.2rem; display: inline-block; animation: pulse-glow-modal 2.5s infinite ease-in-out; }
+.modal-icon i { color: var(--secondary); font-size: 3rem; filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6)); }
+.modal-content h3 { font-family: "Space Grotesk", sans-serif; color: #fff; font-size: 1.6rem; margin-bottom: 0.6rem; letter-spacing: 0.02em; }
+.modal-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.8rem; }
 
 @keyframes pulse-glow-modal {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.3)); }
   50% { transform: scale(1.08); filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.7)); }
 }
-/* ==========================================================================
-   GLOBAL GLASS CARD INTERACTIVE HOVER PIPELINE
-   ========================================================================== */
-.card {
-  /* Jo bhi aapki default glass property hai, uske sath ye line balance karegi */
-  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
-}
 
-.card:hover {
-  /* Jab kisi bhi card par mouse aayega, wo halka sa lift hoga aur soft glow dega */
-  transform: translateY(-4px) !important;
-  border-color: rgba(34, 211, 238, 0.35) !important; /* Premium unified cyan tint */
-  box-shadow: 0 10px 25px rgba(34, 211, 238, 0.08) !important;
-}
+/* Dynamic Text Tags Created via Render Arrays */
+.cyber-tag-master { font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.95; }
+.cyber-tag-node { font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85; }
 
-/* ==========================================================================
-   UNIFIED PIPELINE LAYOUT (CLOSED HARDWARE BUS CHANNEL CONFIGURATION)
-   ========================================================================== */
+/* HARDWARE CLOSED BUS PIPELINE DESIGN REPAIR PACK */
 .gcc-ai-minimal-card {
   position: relative;
-  background-image: 
-    linear-gradient(rgba(34, 211, 238, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.02) 1px, transparent 1px) !important;
+  background-image: linear-gradient(rgba(34, 211, 238, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.02) 1px, transparent 1px) !important;
   background-size: 12px 12px !important;
   background-color: rgba(10, 16, 40, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Soft baseline container border */
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
-
-/* 1st Node: Left, Top, and Bottom borders with combined shadow mesh */
 .gcc-ai-node-first {
   border-left: 3px solid var(--secondary) !important;
   border-top: 2px solid var(--secondary) !important;
   border-bottom: 2px solid var(--secondary) !important;
-  box-shadow: -5px 0 15px rgba(34, 211, 238, 0.08), 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
+  box-shadow: -5px 0 15px rgba(34, 211, 238, 0.08) !important;
 }
-
-/* Mid Nodes: Top and Bottom tracking borders with vertical shadow stream */
 .gcc-ai-node-mid {
   border-top: 2px solid var(--secondary) !important;
   border-bottom: 2px solid var(--secondary) !important;
-  box-shadow: 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
 }
-
-/* Last Node: Right, Top, and Bottom system closer lines with right-anchored shadow */
 .gcc-ai-node-last {
   border-right: 3px solid var(--secondary) !important;
   border-top: 2px solid var(--secondary) !important;
   border-bottom: 2px solid var(--secondary) !important;
-  box-shadow: 5px 0 15px rgba(34, 211, 238, 0.08), 0 5px 15px rgba(34, 211, 238, 0.04), 0 -5px 15px rgba(34, 211, 238, 0.04) !important;
+  box-shadow: 5px 0 15px rgba(34, 211, 238, 0.08) !important;
 }
-
-/* Interactive Hover Engine */
 .gcc-ai-minimal-card:hover {
   background-color: rgba(15, 23, 42, 0.75) !important;
   border-color: rgba(34, 211, 238, 0.5) !important;
   filter: brightness(1.15);
+}
+
+/* Jarvis Content Highlights Modifiers */
+.jarvis-highlight-node { border: 1px solid var(--secondary) !important; background: linear-gradient(135deg, rgba(15, 21, 48, 0.4), rgba(5, 7, 15, 0.7)) !important; padding: 1.2rem; border-radius: 8px; margin-bottom: 15px; position: relative; box-shadow: 0 0 15px rgba(34, 211, 238, 0.15); }
+.jarvis-badge { position: absolute; top: 8px; right: 8px; font-size: 0.65rem; color: var(--secondary); font-weight: bold; font-family: monospace; letter-spacing: 1px; animation: pulse-glow-modal 1.5s infinite; }
+.jarvis-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.jarvis-title-row i { color: var(--secondary); font-size: 1.1rem; filter: drop-shadow(0 0 5px var(--secondary)); }
+.jarvis-title-row h4 { margin: 0; color: #fff; }
+.jarvis-sub { color: var(--secondary); font-size: 0.75rem; font-family: monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 4px 0; }
+.jarvis-desc { margin-top: 8px; color: var(--txt); font-size: 0.88rem; line-height: 1.5; opacity: 0.95; }
+.jarvis-desc span { color: var(--secondary); font-weight: bold; }
+/* ==========================================================================
+   PROFESSIONAL MASTER CERTIFICATE 4-SIDE SHADOW & DECORATION PACK
+   ========================================================================== */
+.gcc-ai-standalone-card {
+  position: relative;
+  /* Charo taraf professional glowing borders */
+  border: 2px solid var(--secondary) !important;
+  
+  /* 4-side dynamic deep shadow mesh configuration */
+  box-shadow: 
+    0 0 25px rgba(34, 211, 238, 0.25),   /* Outer Glow */
+    inset 0 0 15px rgba(34, 211, 238, 0.1), /* Inner Glow */
+    0 15px 35px rgba(0, 0, 0, 0.6) !important; /* Base Drop Shadow */
+    
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(8, 12, 28, 0.98)) !important;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Hover karne par decoration upgrade ho jayegi */
+.gcc-ai-standalone-card:hover {
+  border-color: #ffffff !important; /* Hover par sharp premium look */
+  box-shadow: 
+    0 0 35px rgba(34, 211, 238, 0.45), 
+    inset 0 0 20px rgba(34, 211, 238, 0.2), 
+    0 20px 45px rgba(0, 0, 0, 0.8) !important;
+  filter: brightness(1.1);
+}
+
+/* Ek top cyber-line decoration jo professional card ke top edge par chalegi */
+.gcc-ai-standalone-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  z-index: 2;
 }
