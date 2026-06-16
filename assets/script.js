@@ -26,7 +26,7 @@ const achievements = [
     media: "assets/certificates/gcc0.jpg",
     mediaType: "image",
     link: "#",
-    series: "google-ai"
+    isMaster: true
   },
   {
     title: "Google AI Certificate 1: AI Fundamentals",
@@ -270,7 +270,7 @@ function renderSkills() {
 function renderAchievements() {
   achievementGrid.innerHTML = "";
   
-  // Dynamic Grouping Map: Yeh automatic har series ke sub-modules ko track karega
+  // Dynamic Grouping Map: Track loops correctly for every series separately
   const seriesCounters = {};
 
   achievements.forEach((item) => {
@@ -284,30 +284,33 @@ function renderAchievements() {
     
     const card = createCardShell(); 
 
-    // AUTOMATED PIPELINE ENGINE
+    // AUTOMATED PIPELINE PIPING
     if (item.series && !item.isMaster) {
       card.className += " gcc-ai-minimal-card";
       
-      // Agar is series ka counter pehle nahi bana, toh 0 se initialize karein
+      // Initialize loop counters ONLY for sub-modules (excluding master card)
       if (!seriesCounters[item.series]) {
-        seriesCounters[item.series] = { current: 0, total: achievements.filter(x => x.series === item.series && !x.isMaster).length };
+        seriesCounters[item.series] = { 
+          current: 0, 
+          total: achievements.filter(x => x.series === item.series && !x.isMaster).length 
+        };
       }
       
       const currentTrack = seriesCounters[item.series];
       
       if (currentTrack.current === 0) {
-        card.className += " gcc-ai-node-first"; // Automatic First Node
+        card.className += " gcc-ai-node-first"; // Ribbon starts here (Second card in real array)
       } else if (currentTrack.current === currentTrack.total - 1) {
-        card.className += " gcc-ai-node-last"; // Automatic Last Node
+        card.className += " gcc-ai-node-last";  // Ribbon closes at the last module
       } else {
-        card.className += " gcc-ai-node-mid";  // Automatic Mid Nodes
+        card.className += " gcc-ai-node-mid";
       }
       
-      currentTrack.current++; // Counter increment
-      item.moduleNumber = currentTrack.current; // Track dynamic serial for tag
+      currentTrack.current++;
+      item.moduleNumber = currentTrack.current; // Real counting starting EXACTLY from 1 for sub-modules!
     } 
     else if (item.isMaster) {
-      card.className += " gcc-ai-standalone-card"; // Standalone master card treatment
+      card.className += " gcc-ai-standalone-card"; // Standalone master block treatment
     }
 
     if (item.mediaType === "image") {
@@ -319,19 +322,18 @@ function renderAchievements() {
 
     const infoDiv = document.createElement("div");
     
-    // AUTOMATED CYBER TAG GENERATION
-    if (item.series && !item.isMaster) {
-      const cyberTag = document.createElement("span");
-      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85;";
-      // Dynamic shortcode representation
-      const seriesLabel = item.series.replace("-", " ").toUpperCase();
-      cyberTag.innerHTML = `${seriesLabel} MODULE 0${item.moduleNumber}`;
-      infoDiv.appendChild(cyberTag);
-    } 
-    else if (item.isMaster) {
+    // EXACT AUTOMATED LABELS AS PER YOUR RULE
+    if (item.isMaster) {
       const cyberTag = document.createElement("span");
       cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.95;";
-      cyberTag.innerHTML = "<i class='fas fa-trophy'></i> CORE METRIC CREDENTIAL";
+      cyberTag.innerHTML = "<i class='fas fa-trophy'></i> GOOGLE PROFESSIONAL CERTIFICATE";
+      infoDiv.appendChild(cyberTag);
+    }
+    else if (item.series && !item.isMaster) {
+      const cyberTag = document.createElement("span");
+      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85;";
+      // Dynamic clean generation: Always starts writing 01 from second certificate onwards
+      cyberTag.innerHTML = `GOOGLE CAREER CERTIFICATE 0${item.moduleNumber}`;
       infoDiv.appendChild(cyberTag);
     }
 
@@ -346,7 +348,7 @@ function renderAchievements() {
 
     const link = document.createElement("a");
     link.href = item.link;
-    if(item.link !== "#") {
+    if(item.link && item.link !== "#") {
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         link.innerHTML = "Verify Credentials <i class='fas fa-external-link-alt' style='margin-left:5px; font-size:11px;'></i>";
