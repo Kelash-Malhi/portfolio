@@ -21,10 +21,59 @@ const achievements = [
     text: "GLOBAL ANALYTICS & CAREER SPECIALIZATIONS"
   },
   {
-    title: "Google Career Certificate in Data Analytics",
-    description: "In-progress professional pipeline authorized by Google. Focuses on structural analytical pipelines, data cleansing models, SQL data querying, and strategic dashboarding foundations.",
-    media: "assets/Certificates/google_placeholder.png",
-    mediaType: "text",
+    title: "Google AI Essentials — Professional Certificate",
+    description: "The ultimate credential awarded by Google upon successful architecture and execution of all 7 core AI engineering tracks. Validated full-scale professional competence in deploying predictive pipelines, multi-modal generative assets, advanced structured prompting, and localized application system integrations.",
+    media: "assets/Certificates/gcc0.jpg",
+    mediaType: "image",
+    link: "#" // Yahan apna main verified link aayega jab complete credential mil jaye!
+  },
+  {
+    title: "Google AI Certificate 1: AI Fundamentals",
+    description: "Mastered core artificial intelligence paradigms, exploring machine learning operational cycles, neural network concepts, and structural data frameworks while evaluating data ethics, algorithmic bias, and security protocols.",
+    media: "assets/Certificates/gcc1.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a"
+  },
+  {
+    title: "Google AI Certificate 2: AI for Brainstorming and Planning",
+    description: "Leveraged advanced large language models (LLMs) to construct high-velocity project pipelines, map product architecture ideas, and optimize technical workflows for software development models.",
+    media: "assets/Certificates/gcc2.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/32907afbb403e47a1f532d4ee142872f"
+  },
+  {
+    title: "Google AI Certificate 3: AI for Research and Insights",
+    description: "Deployed specialized cognitive AI nodes to ingest dense unstructured data, optimize semantic search patterns, run market intelligence queries, and synthesize complex technical documentation.",
+    media: "assets/Certificates/gcc3.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/90747a953542262e8d14feb469570a34"
+  },
+  {
+    title: "Google AI Certificate 4: AI for Writing and Communicating",
+    description: "Engineered precise prompt engineering structures to draft corporate technical specs, automate complex communication channels, and refine product onboarding documentation.",
+    media: "assets/Certificates/gcc4.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/355601c1199d073ae8831c17fffdb87c"
+  },
+  {
+    title: "Google AI Certificate 5: AI for Content Creation",
+    description: "Explored generative modeling pipelines for asset production, mapping multi-modal algorithms to generate high-end visual design frameworks and digital product documentation assets.",
+    media: "assets/Certificates/gcc5.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/62add493d8520e51eb0c915f5ac5b39d"
+  },
+  {
+    title: "Google AI Certificate 6: AI for Data Analysis",
+    description: "Applied machine learning optimization models to automate raw dataset cleansing, execute automated exploratory data analysis (EDA), and build predictive statistical workflows for business intelligence.",
+    media: "assets/Certificates/gcc6.jpg",
+    mediaType: "image",
+    link: "https://coursera.org/share/2baa4ec89d5c21d22667c62290f6bcf3"
+  },
+  {
+    title: "Google AI Certificate 7: AI for App Building",
+    description: "Architected and deployed AI-driven software nodes, focusing on integrating large language models (LLMs) and automated analytical engines into functional application backend systems to maximize runtime utility.",
+    media: "assets/Certificates/gcc7.jpg",
+    mediaType: "image",
     link: "#"
   },
   {
@@ -228,6 +277,11 @@ function renderSkills() {
 
 function renderAchievements() {
   achievementGrid.innerHTML = "";
+  
+  // Pehle hum sirf Google AI wale courses ka total count aur positions track karne ke liye dynamic logic nikalenge
+  const gccAIItems = achievements.filter(item => item.title && item.title.includes("Google AI"));
+  let gccAICounter = 0;
+
   achievements.forEach((item) => {
     if (item.type === "heading") {
       const sectionTitle = document.createElement("h2");
@@ -237,7 +291,25 @@ function renderAchievements() {
       return;
     }
     
-    const card = createCardShell();
+    const card = createCardShell(); 
+
+    // PIPELINE RECOGNITION ENGINE
+    if (item.title && item.title.includes("Google AI")) {
+      card.className += " gcc-ai-minimal-card";
+      
+      if (gccAICounter === 0) {
+        // First Certificate Card
+        card.className += " gcc-ai-node-first";
+      } else if (gccAICounter === gccAIItems.length - 1) {
+        // Last Certificate Card
+        card.className += " gcc-ai-node-last";
+      } else {
+        // Mid Certificates Cards (2, 3, 4, 5)
+        card.className += " gcc-ai-node-mid";
+      }
+      gccAICounter++; // Processing next sequential node
+    }
+
     if (item.mediaType === "image") {
       const image = document.createElement("img");
       image.src = item.media;
@@ -246,6 +318,14 @@ function renderAchievements() {
     }
 
     const infoDiv = document.createElement("div");
+    
+    if (item.title && item.title.includes("Google AI")) {
+      const cyberTag = document.createElement("span");
+      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85;";
+      cyberTag.innerHTML = `GOOGLE CAREER CERTIFICATE ${gccAICounter}`;
+      infoDiv.appendChild(cyberTag);
+    }
+
     const title = document.createElement("h3");
     title.textContent = item.title;
     const description = document.createElement("p");
@@ -262,15 +342,13 @@ function renderAchievements() {
         link.rel = "noopener noreferrer";
         link.innerHTML = "Verify Credentials <i class='fas fa-external-link-alt' style='margin-left:5px; font-size:11px;'></i>";
     } else {
-        link.innerHTML = "In Progress <i class='fas fa-spinner fa-spin' style='margin-left:5px; font-size:11px;'></i>";
+        link.innerHTML = "Completed <i class='fas fa-check-circle' style='margin-left:5px; font-size:11px; color:var(--secondary);'></i>";
     }
 
     card.appendChild(link);
     achievementGrid.appendChild(card);
   });
-}
-
-function renderProjects() {
+}function renderProjects() {
   projectGrid.innerHTML = "";
   projects.forEach((project) => {
     if (project.type === "heading") {
