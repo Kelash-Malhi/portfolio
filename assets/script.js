@@ -1,3 +1,4 @@
+// DOM Element Nodes
 const achievementGrid = document.getElementById("achievement-grid");
 const projectGrid = document.getElementById("project-grid");
 const educationList = document.getElementById("education-list");
@@ -16,12 +17,9 @@ const coreSkills = [
 ];
 
 const achievements = [
+  { type: "heading", text: "GLOBAL ANALYTICS & CAREER SPECIALIZATIONS" },
   {
-    type: "heading",
-    text: "GLOBAL ANALYTICS & CAREER SPECIALIZATIONS"
-  },
-  {
-    title: "Overall Google AI Essentials — Professional Certificate",
+    title: "Google AI Essentials — Professional Certificate",
     description: "The ultimate credential awarded by Google upon successful architecture and execution of all 7 core AI engineering tracks. Validated full-scale professional competence in deploying predictive pipelines, multi-modal generative assets, advanced structured prompting, and localized application system integrations.",
     media: "assets/certificates/gcc0.jpg",
     mediaType: "image",
@@ -34,7 +32,7 @@ const achievements = [
     media: "assets/certificates/gcc1.jpg",
     mediaType: "image",
     link: "https://coursera.org/share/f5bb64381d94e87a31fb857c4bac553a",
-    series: "google-ai" // Pipeline Series Anchor
+    series: "google-ai"
   },
   {
     title: "Google AI Certificate 2: AI for Brainstorming and Planning",
@@ -82,7 +80,7 @@ const achievements = [
     media: "assets/certificates/gcc7.jpg",
     mediaType: "image",
     link: "#",
-    series: "google-ai" // Closing Pipeline Node
+    series: "google-ai"
   },
   {
     title: "The Data Science Profession — University of London",
@@ -98,10 +96,7 @@ const achievements = [
     mediaType: "image",
     link: "https://www.mygreatlearning.com/certificate/VWVHSWEO?referrer_code=GLMLKL6WCY4FW"
   },
-  {
-    type: "heading",
-    text: "COMPUTATIONAL ALGORITHMS & CORE ENGINEERING"
-  },
+  { type: "heading", text: "COMPUTATIONAL ALGORITHMS & CORE ENGINEERING" },
   {
     title: "Python Development & Engineering Certificate",
     description: "Completed an intensive development track covering object-oriented structures, algorithms, and computational efficiency pipelines authorized by PITP-Muet.",
@@ -116,10 +111,7 @@ const achievements = [
     mediaType: "image",
     link: "https://coursera.org/share/5f98f220105e53c1b0f01619fc300329"
   },
-  {
-    type: "heading",
-    text: "DIVERSE TECHNICAL FOUNDATIONS & INTERDISCIPLINARY STUDIES"
-  },
+  { type: "heading", text: "DIVERSE TECHNICAL FOUNDATIONS & INTERDISCIPLINARY STUDIES" },
   {
     title: "Front End Development - HTML",
     description: "Acquired essential web architecture skills through Great Learning Academy, mastering semantic HTML structure, document object mapping, and responsive markup layouts.",
@@ -128,6 +120,7 @@ const achievements = [
     link: "https://www.mygreatlearning.com/certificate/XICBMPQE?referrer_code=GLMLKL6WCY4FW"
   }
 ];
+
 const projects = [
   { type: "heading", text: "DATA SCIENCE & ANALYTICAL DASHBOARDS" },
   {
@@ -201,20 +194,17 @@ const booksRead = [
   {
     title: "White Nights",
     author: "Fyodor Dostoevsky",
-    // status: "Completed / Analysis Phase",
     status: "In Pipeline (Active)",
-    
     desc: "Delving into classical psychological sub-texts and analytical human behavior mapping to complement data storytelling with deep empathy and narrative structure."
   }
 ];
 
 const moviesMedia = [
-  
   {
     title: "Iron Man & The J.A.R.V.I.S. Paradigm",
     genre: "Artificial General Intelligence (AGI)",
     desc: "Driven by a deep technical obsession with the J.A.R.V.I.S. infrastructure framework, evaluating its multi-modal computer vision pipelines, edge telemetry grids, and automated decision-making clusters.",
-    isJarvis: true // Yeh special flag hume unique design dene me madad karega
+    isJarvis: true
   },
   {
     title: "The Social Network (2010)",
@@ -258,6 +248,7 @@ function createCardShell() {
 }
 
 function renderSkills() {
+  if (!skillsGrid) return;
   skillsGrid.innerHTML = "";
   coreSkills.forEach(skill => {
     const span = document.createElement("span");
@@ -268,10 +259,13 @@ function renderSkills() {
 }
 
 function renderAchievements() {
+  if (!achievementGrid) return;
   achievementGrid.innerHTML = "";
   
-  // Dynamic Grouping Map: Track loops correctly for every series separately
   const seriesCounters = {};
+  // Compute true total sub-modules before processing items
+  const subModules = achievements.filter(x => x.series && !x.isMaster);
+  const totalSubModules = subModules.length;
 
   achievements.forEach((item) => {
     if (item.type === "heading") {
@@ -284,33 +278,28 @@ function renderAchievements() {
     
     const card = createCardShell(); 
 
-    // AUTOMATED PIPELINE PIPING
     if (item.series && !item.isMaster) {
-      card.className += " gcc-ai-minimal-card";
+      card.classList.add("gcc-ai-minimal-card");
       
-      // Initialize loop counters ONLY for sub-modules (excluding master card)
       if (!seriesCounters[item.series]) {
-        seriesCounters[item.series] = { 
-          current: 0, 
-          total: achievements.filter(x => x.series === item.series && !x.isMaster).length 
-        };
+        seriesCounters[item.series] = 0;
       }
       
-      const currentTrack = seriesCounters[item.series];
+      const currentIdx = seriesCounters[item.series];
       
-      if (currentTrack.current === 0) {
-        card.className += " gcc-ai-node-first"; // Ribbon starts here (Second card in real array)
-      } else if (currentTrack.current === currentTrack.total - 1) {
-        card.className += " gcc-ai-node-last";  // Ribbon closes at the last module
+      if (currentIdx === 0) {
+        card.classList.add("gcc-ai-node-first");
+      } else if (currentIdx === totalSubModules - 1) {
+        card.classList.add("gcc-ai-node-last");
       } else {
-        card.className += " gcc-ai-node-mid";
+        card.classList.add("gcc-ai-node-mid");
       }
       
-      currentTrack.current++;
-      item.moduleNumber = currentTrack.current; // Real counting starting EXACTLY from 1 for sub-modules!
+      seriesCounters[item.series]++;
+      item.moduleNumber = seriesCounters[item.series];
     } 
     else if (item.isMaster) {
-      card.className += " gcc-ai-standalone-card"; // Standalone master block treatment
+      card.classList.add("gcc-ai-standalone-card");
     }
 
     if (item.mediaType === "image") {
@@ -322,17 +311,15 @@ function renderAchievements() {
 
     const infoDiv = document.createElement("div");
     
-    // EXACT AUTOMATED LABELS AS PER YOUR RULE
     if (item.isMaster) {
       const cyberTag = document.createElement("span");
-      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:700; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.95;";
+      cyberTag.className = "cyber-tag-master";
       cyberTag.innerHTML = "<i class='fas fa-trophy'></i> GOOGLE PROFESSIONAL CERTIFICATE";
       infoDiv.appendChild(cyberTag);
     }
     else if (item.series && !item.isMaster) {
       const cyberTag = document.createElement("span");
-      cyberTag.style.cssText = "font-size:0.65rem; color:var(--secondary); font-family:monospace; font-weight:600; letter-spacing:0.5px; display:block; margin-bottom:6px; opacity:0.85;";
-      // Dynamic clean generation: Always starts writing 01 from second certificate onwards
+      cyberTag.className = "cyber-tag-node";
       cyberTag.innerHTML = `GOOGLE CAREER CERTIFICATE 0${item.moduleNumber}`;
       infoDiv.appendChild(cyberTag);
     }
@@ -351,16 +338,18 @@ function renderAchievements() {
     if(item.link && item.link !== "#") {
         link.target = "_blank";
         link.rel = "noopener noreferrer";
-        link.innerHTML = "Verify Credentials <i class='fas fa-external-link-alt' style='margin-left:5px; font-size:11px;'></i>";
+        link.innerHTML = "Verify Credentials <i class='fas fa-external-link-alt'></i>";
     } else {
-        link.innerHTML = "Completed <i class='fas fa-check-circle' style='margin-left:5px; font-size:11px; color:var(--secondary);'></i>";
+        link.innerHTML = "Completed <i class='fas fa-check-circle'></i>";
     }
 
     card.appendChild(link);
     achievementGrid.appendChild(card);
   });
 }
+
 function renderProjects() {
+  if (!projectGrid) return;
   projectGrid.innerHTML = "";
   projects.forEach((project) => {
     if (project.type === "heading") {
@@ -386,7 +375,7 @@ function renderProjects() {
     link.href = project.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.innerHTML = "Review Architecture <i class='fas fa-code-branch' style='margin-left:5px; font-size:12px;'></i>";
+    link.innerHTML = "Review Architecture <i class='fas fa-code-branch'></i>";
 
     card.appendChild(link);
     projectGrid.appendChild(card);
@@ -394,67 +383,70 @@ function renderProjects() {
 }
 
 function renderLearningHub() {
-  booksList.innerHTML = "";
-  booksRead.forEach((book) => {
-    const div = document.createElement("div");
-    div.className = "sub-item";
-    const statusColor = book.status.includes("Active") ? "var(--secondary)" : "var(--primary)";
-    
-    div.innerHTML = `
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap;">
-        <h4>${book.title}</h4>
-        <span style="font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: ${statusColor}; background: rgba(255,255,255,0.03); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.08);">${book.status}</span>
-      </div>
-      <p style="color:var(--muted); font-size:0.85rem; font-style:italic; margin: 4px 0;">By ${book.author}</p>
-      <p style="margin-top:8px; color:var(--txt); line-height: 1.5;">${book.desc}</p>
-    `;
-    booksList.appendChild(div);
-  });
-
-  moviesList.innerHTML = "";
-  moviesMedia.forEach((movie) => {
-    const div = document.createElement("div");
-    
-    if (movie.isJarvis) {
-      div.className = "sub-item jarvis-highlight-node";
-      div.style.cssText = "border: 1px solid var(--secondary); background: linear-gradient(135deg, rgba(15, 21, 48, 0.4), rgba(5, 7, 15, 0.7)); padding: 1.2rem; border-radius: 8px; margin-bottom: 15px; position: relative; box-shadow: 0 0 15px rgba(34, 211, 238, 0.15);";
+  if (booksList) {
+    booksList.innerHTML = "";
+    booksRead.forEach((book) => {
+      const div = document.createElement("div");
+      div.className = "sub-item";
+      const statusColor = book.status.includes("Active") ? "var(--secondary)" : "var(--primary)";
       
       div.innerHTML = `
-        <div style="position: absolute; top: 8px; right: 8px; font-size: 0.65rem; color: var(--secondary); font-weight: bold; font-family: monospace; letter-spacing: 1px; animation: pulse-glow-modal 1.5s infinite;">
-          <i class="fas fa-satellite-dish" style="font-size: 8px; margin-right: 3px; vertical-align: middle;"></i> JARVIS_CORE
+        <div class="learning-header">
+          <h4>${book.title}</h4>
+          <span class="learning-status" style="color: ${statusColor};">${book.status}</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-          <i class="fas fa-atom" style="color: var(--secondary); font-size: 1.1rem; filter: drop-shadow(0 0 5px var(--secondary));"></i>
-          <h4 style="margin: 0; color: #fff;">${movie.title}</h4>
-        </div>
-        <p style="color:var(--secondary); font-size:0.75rem; font-family: monospace; font-weight:600; text-transform:uppercase; letter-spacing: 0.05em; margin: 4px 0;">
-          [ INSPIRATIONAL ANCHOR & SYSTEM ANALYSIS ]
-        </p>
-        <p style="margin-top:8px; color:var(--txt); font-size:0.88rem; line-height: 1.5; opacity: 0.95;">
-          <span style="color: var(--secondary); font-weight: bold;">[OBSESSION_LOG]</span> ${movie.desc}
-        </p>
+        <p class="learning-author">By ${book.author}</p>
+        <p class="learning-desc">${book.desc}</p>
       `;
-    } else {
-      div.className = "sub-item";
-      div.innerHTML = `
-        <h4>${movie.title}</h4>
-        <p style="color:var(--muted); font-size:0.85rem; font-style:italic; margin: 4px 0;">Genre: ${movie.genre}</p>
-        <p style="margin-top:8px; color:var(--txt); line-height: 1.5;">${movie.desc}</p>
-      `;
-    }
-    moviesList.appendChild(div);
-  });
+      booksList.appendChild(div);
+    });
+  }
+
+  if (moviesList) {
+    moviesList.innerHTML = "";
+    moviesMedia.forEach((movie) => {
+      const div = document.createElement("div");
+      
+      if (movie.isJarvis) {
+        div.className = "sub-item jarvis-highlight-node";
+        div.innerHTML = `
+          <div class="jarvis-badge">
+            <i class="fas fa-satellite-dish"></i> JARVIS_CORE
+          </div>
+          <div class="jarvis-title-row">
+            <i class="fas fa-atom"></i>
+            <h4>${movie.title}</h4>
+          </div>
+          <p class="jarvis-sub">[ INSPIRATIONAL ANCHOR & SYSTEM ANALYSIS ]</p>
+          <p class="jarvis-desc">
+            <span>[OBSESSION_LOG]</span> ${movie.desc}
+          </p>
+        `;
+      } else {
+        div.className = "sub-item";
+        div.innerHTML = `
+          <h4>${movie.title}</h4>
+          <p class="learning-author">Genre: ${movie.genre}</p>
+          <p class="learning-desc">${movie.desc}</p>
+        `;
+      }
+      moviesList.appendChild(div);
+    });
+  }
 }
+
 function renderEducation() {
+  if (!educationList) return;
   educationList.innerHTML = "";
   education.forEach((entry) => {
     const item = document.createElement("article");
     item.className = "timeline-item";
-    item.innerHTML = `<h3>${entry.degree}</h3><p style='color:var(--secondary); font-weight:500; margin: 2px 0;'>${entry.institute}</p><p style='font-size:0.9rem; margin:0;'>${entry.year}</p>`;
+    item.innerHTML = `<h3>${entry.degree}</h3><p class="timeline-inst">${entry.institute}</p><p class="timeline-year">${entry.year}</p>`;
     educationList.appendChild(item);
   });
 }
 
+// Highly optimized declarative 3D Card Hover Interaction using custom properties instead of constant JS paint re-evaluations
 function enableCardTiltAnimation() {
   const cards = document.querySelectorAll(".tilt-card");
   cards.forEach((card) => {
@@ -464,26 +456,30 @@ function enableCardTiltAnimation() {
       const y = event.clientY - rect.top;
       const rotateY = ((x / rect.width) - 0.5) * 10;
       const rotateX = (0.5 - (y / rect.height)) * 10;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      
+      card.style.setProperty("--rx", `${rotateX}deg`);
+      card.style.setProperty("--ry", `${rotateY}deg`);
+      card.style.setProperty("--ty", `-4px`);
     });
 
     card.addEventListener("mouseleave", () => {
-      card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      card.style.setProperty("--rx", `0deg`);
+      card.style.setProperty("--ry", `0deg`);
+      card.style.setProperty("--ty", `0px`);
     });
   });
 }
 
-// Function to handle Resume In-Progress Popup logic securely
 function setupResumePopup() {
   const modal = document.getElementById("resume-modal");
   const closeBtn = document.getElementById("close-modal-btn");
   const resumeTriggers = document.querySelectorAll(".resume-trigger");
 
-  if (!modal || !closeBtn) return; // Prevents breaking engine if element injection mismatches
+  if (!modal || !closeBtn) return;
 
   resumeTriggers.forEach(trigger => {
     trigger.addEventListener("click", (e) => {
-      e.preventDefault(); // Page structural skip prevent routine
+      e.preventDefault();
       modal.classList.add("active");
     });
   });
@@ -499,33 +495,34 @@ function setupResumePopup() {
   });
 }
 
-// Global Interaction Listeners for industry standards
 function setupInteractionListeners() {
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.classList.add("show");
-    } else {
-      backToTopBtn.classList.remove("show");
-    }
-  });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  copyEmailBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText("kelashhamthani2.0@gmail.com").then(() => {
-      const originalText = copyEmailBtn.innerHTML;
-      copyEmailBtn.innerHTML = "<i class='fas fa-check'></i> Copied!";
-      copyEmailBtn.style.background = "var(--secondary)";
-      copyEmailBtn.style.color = "var(--bg)";
-      setTimeout(() => {
-        copyEmailBtn.innerHTML = originalText;
-        copyEmailBtn.style.background = "var(--primary)";
-        copyEmailBtn.style.color = "white";
-      }, 2000);
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
     });
-  });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  if (copyEmailBtn) {
+    copyEmailBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("kelashhamthani2.0@gmail.com").then(() => {
+        const originalText = copyEmailBtn.innerHTML;
+        copyEmailBtn.innerHTML = "<i class='fas fa-check'></i> Copied!";
+        copyEmailBtn.classList.add("copied-success");
+        setTimeout(() => {
+          copyEmailBtn.innerHTML = originalText;
+          copyEmailBtn.classList.remove("copied-success");
+        }, 2000);
+      });
+    });
+  }
 }
 
 function initializePortfolio() {
@@ -536,11 +533,11 @@ function initializePortfolio() {
   renderEducation();
   enableCardTiltAnimation();
   setupInteractionListeners();
-  
-  // Popup module implementation triggered safely inside runtime setup
   setupResumePopup();
   
-  yearElement.textContent = new Date().getFullYear();
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 }
 
-initializePortfolio();
+document.addEventListener("DOMContentLoaded", initializePortfolio);
