@@ -23,7 +23,7 @@ const achievements = [
     description: "The ultimate credential awarded by Google upon successful architecture and execution of all 7 core AI engineering tracks. Validated full-scale professional competence in deploying predictive pipelines, multi-modal generative assets, advanced structured prompting, and localized application system integrations.",
     media: "assets/certificates/gcc0.jpg",
     mediaType: "image",
-    link: "#",
+    link: "https://coursera.org/share/683255306b27c0a5d90d0325720cfdeb",
     isMaster: true
   },
   {
@@ -79,7 +79,7 @@ const achievements = [
     description: "Architected and deployed AI-driven software nodes, focusing on integrating large language models (LLMs) and automated analytical engines into functional application backend systems to maximize runtime utility.",
     media: "assets/certificates/gcc7.jpg",
     mediaType: "image",
-    link: "#",
+    link: "https://coursera.org/share/2779e4f1f4990d5bd0cb92871139d9ba",
     series: "google-ai"
   },
   {
