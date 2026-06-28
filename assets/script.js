@@ -83,6 +83,21 @@ const achievements = [
     series: "google-ai"
   },
   {
+    title: "AI For Everyone — DeepLearning.AI",
+    description: "Foundational conceptual framework under Andrew Ng, focusing on machine learning project workflows, data strategy infrastructure, and neural networking lifecycles.",
+    media: "assets/certificates/dlai.png",
+    mediaType: "image",
+    link: "https://coursera.org/share/5f98f220105e53c1b0f01619fc300329"
+  },
+   { type: "heading", text: "COMPUTATIONAL ALGORITHMS & CORE ENGINEERING" },
+  {
+    title: "Python Development & Engineering Certificate",
+    description: "Completed an intensive development track covering object-oriented structures, algorithms, and computational efficiency pipelines authorized by PITP-Muet.",
+    media: "assets/certificates/pitpc.png",
+    mediaType: "image",
+    link: "assets/certificates/pitpc.png"
+  },
+   {
     title: "The Data Science Profession — University of London",
     description: "Analyzed case studies on standard pipelines, production requirements, statistical methodologies, and structural communication models in institutional analytics groups.",
     media: "assets/certificates/uol.png",
@@ -96,21 +111,8 @@ const achievements = [
     mediaType: "image",
     link: "https://www.mygreatlearning.com/certificate/VWVHSWEO?referrer_code=GLMLKL6WCY4FW"
   },
-  { type: "heading", text: "COMPUTATIONAL ALGORITHMS & CORE ENGINEERING" },
-  {
-    title: "Python Development & Engineering Certificate",
-    description: "Completed an intensive development track covering object-oriented structures, algorithms, and computational efficiency pipelines authorized by PITP-Muet.",
-    media: "assets/certificates/pitpc.png",
-    mediaType: "image",
-    link: "assets/certificates/pitpc.png"
-  },
-  {
-    title: "AI For Everyone — DeepLearning.AI",
-    description: "Foundational conceptual framework under Andrew Ng, focusing on machine learning project workflows, data strategy infrastructure, and neural networking lifecycles.",
-    media: "assets/certificates/dlai.png",
-    mediaType: "image",
-    link: "https://coursera.org/share/5f98f220105e53c1b0f01619fc300329"
-  },
+
+  
   { type: "heading", text: "DIVERSE TECHNICAL FOUNDATIONS & INTERDISCIPLINARY STUDIES" },
   {
     title: "Front End Development - HTML",
